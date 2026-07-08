@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KairosCare - Every Care Visit Tells a Story</title>
+  <meta name="description" content="KairosCare brings visibility to home care. Real-time family updates, AI-powered care summaries, and early warning systems that catch decline before crisis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="grain-overlay"></div>
+
+  <nav class="progress-nav">
+    <div class="progress-dot active" data-section="0"></div>
+    <div class="progress-dot" data-section="1"></div>
+    <div class="progress-dot" data-section="2"></div>
+    <div class="progress-dot" data-section="3"></div>
+    <div class="progress-dot" data-section="4"></div>
+    <div class="progress-dot" data-section="5"></div>
+    <div class="progress-dot" data-section="6"></div>
+    <div class="progress-dot" data-section="7"></div>
+    <div class="progress-dot" data-section="8"></div>
+    <div class="progress-dot" data-section="9"></div>
+  </nav>
+
+  <!-- Section 1: Opening -->
+  <section class="section section-opening" id="opening">
+    <div class="opening-content">
+      <h1 class="opening-line-1">Behind every care visit is a story.</h1>
+      <h1 class="opening-line-2">Most of it goes unseen.</h1>
+      <div class="blue-glow"></div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Invisible Crisis -->
+  <section class="section section-crisis" id="crisis">
+    <div class="crisis-content">
+      <h2 class="crisis-title">The Invisible Crisis</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" data-target="3500000" data-suffix="" data-format="abbr">0</span>
+          <span class="stat-label">home care clients in the US</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="68" data-suffix="%">0</span>
+          <span class="stat-label">of families feel left in the dark</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" data-target="17" data-suffix="B" data-prefix="$">0</span>
+          <span class="stat-label">annual cost of preventable hospitalizations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: A Day in Care (Horizontal Scroll) -->
+  <section class="section section-day" id="day">
+    <div class="day-wrapper">
+      <div class="day-track">
+        <div class="day-card care-card">
+          <div class="day-time">7:00 AM</div>
+          <svg class="day-icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <path d="M24 14v10l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Morning Check-in</h3>
+          <p>CNA arrives. Vital signs taken. Mom seems a little tired today.</p>
+        </div>
+        <div class="day-card care-card">
+          <div class="day-time">9:00 AM</div>
+          <svg class="day-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="14" y="8" width="20" height="32" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="24" cy="20" r="3" fill="currentColor" opacity="0.5"/>
+            <line x1="20" y1="28" x2="28" y2="28" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="20" y1="32" x2="28" y2="32" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <h3>Medication</h3>
+          <p>Morning meds administered. Blood pressure slightly elevated from yesterday.</p>
+        </div>
+        <div class="day-card care-card">
+          <div class="day-time">11:00 AM</div>
+          <svg class="day-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M16 32c0-8 4-12 8-12s8 4 8 12" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="24" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 36h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Mobility Exercise</h3>
+          <p>Walked to the kitchen and back. Steadier than last week, using walker less.</p>
+        </div>
+        <div class="day-card family-card">
+          <div class="day-time">2:00 PM</div>
+          <svg class="day-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="12" y="10" width="24" height="28" rx="6" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="18" y1="34" x2="30" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="22" r="1.5" fill="currentColor" opacity="0.3"/>
+          </svg>
+          <h3>Family Wondering</h3>
+          <p class="family-text">"Is mom okay today? Haven't heard anything. Should I call?"</p>
+        </div>
+        <div class="day-card care-card">
+          <div class="day-time">5:00 PM</div>
+          <svg class="day-icon" viewBox="0 0 48 48" fill="none">
+            <path d="M24 12c-6 0-10 4-10 8 0 6 10 16 10 16s10-10 10-16c0-4-4-8-10-8z" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="24" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <h3>Evening Vitals</h3>
+          <p>All vitals stable. CNA notes mom ate well. Shift complete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: The Gap -->
+  <section class="section section-gap" id="gap">
+    <div class="gap-content">
+      <div class="gap-left">
+        <h3 class="gap-label">Caregiver Notes</h3>
+        <div class="notes-stream">
+          <div class="note-line">Patient alert and oriented x3</div>
+          <div class="note-line">Ambulation with walker 50ft</div>
+          <div class="note-line">BP 138/82 slight elevation</div>
+          <div class="note-line">Meal intake 75% breakfast</div>
+          <div class="note-line">Mood: pleasant, talkative</div>
+          <div class="note-line">Skin intact, no new concerns</div>
+          <div class="note-line">Pain level reported 2/10</div>
+          <div class="note-line">Evening meds administered</div>
+        </div>
+      </div>
+      <div class="gap-divider">
+        <svg class="gap-svg" viewBox="0 0 4 400" preserveAspectRatio="none">
+          <line class="gap-line" x1="2" y1="0" x2="2" y2="400" stroke="#155EEF" stroke-width="2" stroke-dasharray="400" stroke-dashoffset="400"/>
+        </svg>
+      </div>
+      <div class="gap-right">
+        <h3 class="gap-label">Family</h3>
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-empty">
+            <svg viewBox="0 0 48 48" fill="none" class="phone-icon">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1" opacity="0.2"/>
+              <path d="M18 24h12M24 18v12" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
+            </svg>
+            <span>No updates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="gap-text">The data exists. It just never reaches the people who need it.</p>
+  </section>
+
+  <!-- Section 5: Enter KairosCare -->
+  <section class="section section-enter" id="enter">
+    <div class="enter-content">
+      <div class="kc-logo-reveal">
+        <span class="kc-logo-text">KairosCare</span>
+      </div>
+      <div class="capability-cards">
+        <div class="cap-card cap-card-1">
+          <div class="cap-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 8c-2 0-4 2-4 4v8c0 2 2 4 4 4s4-2 4-4v-8c0-2-2-4-4-4z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 18v2c0 4.4 3.6 8 8 8s8-3.6 8-8v-2" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="20" y1="28" x2="20" y2="34" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <p>Voice notes in any language &rarr; AI-processed care summaries</p>
+        </div>
+        <div class="cap-card cap-card-2">
+          <div class="cap-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="6" width="24" height="28" rx="6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 20h12M14 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="28" cy="12" r="4" fill="#155EEF" opacity="0.6"/>
+            </svg>
+          </div>
+          <p>Real-time family updates via iMessage</p>
+        </div>
+        <div class="cap-card cap-card-3">
+          <div class="cap-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 6l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <circle cx="20" cy="28" r="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+            </svg>
+          </div>
+          <p>Early warning system catches decline before it becomes a crisis</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: How It Works -->
+  <section class="section section-how" id="how">
+    <div class="how-content">
+      <h2 class="how-title">How It Works</h2>
+      <div class="flow-container">
+        <svg class="flow-path-svg" viewBox="0 0 800 120" preserveAspectRatio="none">
+          <path class="flow-path" d="M0,60 C100,60 100,30 200,30 C300,30 300,90 400,90 C500,90 500,30 600,30 C700,30 700,60 800,60" fill="none" stroke="#155EEF" stroke-width="2" stroke-dasharray="1200" stroke-dashoffset="1200"/>
+        </svg>
+        <div class="flow-steps">
+          <div class="flow-step step-1">
+            <div class="step-dot"></div>
+            <div class="step-icon">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 6c-2 0-3 1.5-3 3v6c0 1.5 1 3 3 3s3-1.5 3-3V9c0-1.5-1-3-3-3z" stroke="currentColor" stroke-width="1.2"/><path d="M10 14v1c0 3.3 2.7 6 6 6s6-2.7 6-6v-1" stroke="currentColor" stroke-width="1.2"/></svg>
+            </div>
+            <span class="step-label">CNA speaks</span>
+          </div>
+          <div class="flow-step step-2">
+            <div class="step-dot"></div>
+            <div class="step-icon">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 10h20v12H6z" stroke="currentColor" stroke-width="1.2" rx="2"/><path d="M10 16h4M18 14h4M10 18h6" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
+            </div>
+            <span class="step-label">Whisper transcribes</span>
+          </div>
+          <div class="flow-step step-3">
+            <div class="step-dot"></div>
+            <div class="step-icon">
+              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="8" stroke="currentColor" stroke-width="1.2"/><path d="M13 16l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="step-label">AI extracts insights</span>
+          </div>
+          <div class="flow-step step-4">
+            <div class="step-dot"></div>
+            <div class="step-icon">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="10" y="6" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="M14 20h4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            </div>
+            <span class="step-label">Family gets iMessage</span>
+          </div>
+          <div class="flow-step step-5">
+            <div class="step-dot"></div>
+            <div class="step-icon">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M10 14h12M10 18h8" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
+            </div>
+            <span class="step-label">Agency sees dashboard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: The Impact -->
+  <section class="section section-impact" id="impact">
+    <div class="impact-content">
+      <h2 class="impact-title">The Impact</h2>
+      <div class="ripple-container">
+        <div class="ripple ripple-1"></div>
+        <div class="ripple ripple-2"></div>
+        <div class="ripple ripple-3"></div>
+      </div>
+      <div class="impact-stats">
+        <div class="impact-stat layer-1">
+          <span class="impact-number">$15-30K</span>
+          <span class="impact-label">saved per prevented hospitalization</span>
+        </div>
+        <div class="impact-stat layer-2">
+          <span class="impact-number">89%</span>
+          <span class="impact-label">family satisfaction</span>
+        </div>
+        <div class="impact-stat layer-3">
+          <span class="impact-number">30 sec</span>
+          <span class="impact-label">vs 10 minutes for CNA documentation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Three Experiences -->
+  <section class="section section-experiences" id="experiences">
+    <div class="experiences-content">
+      <div class="exp-panel exp-agencies">
+        <div class="exp-inner">
+          <span class="exp-tag">For Agencies</span>
+          <h3>Prove care quality. Prevent hospitalizations. Retain clients.</h3>
+          <p>Real-time dashboards show visit compliance, clinical trends, and early warning flags across your entire census.</p>
+        </div>
+      </div>
+      <div class="exp-panel exp-caregivers">
+        <div class="exp-inner">
+          <span class="exp-tag">For Caregivers</span>
+          <h3>Speak. Don't type. Your work finally gets seen.</h3>
+          <p>30-second voice notes in any language replace 10-minute paper forms. AI handles the rest.</p>
+        </div>
+      </div>
+      <div class="exp-panel exp-families">
+        <div class="exp-inner">
+          <span class="exp-tag">For Families</span>
+          <h3>Know your loved one is safe. Every single day.</h3>
+          <p>AI-generated care summaries arrive via iMessage. No app to download, no portal to check.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: The Future -->
+  <section class="section section-future" id="future">
+    <div class="future-content">
+      <div class="particle-field">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+      <p class="future-line future-line-1">Every family deserves to know their loved one is safe.</p>
+      <p class="future-line future-line-2">Every caregiver deserves to know their work matters.</p>
+    </div>
+  </section>
+
+  <!-- Section 10: CTA -->
+  <section class="section section-cta" id="cta">
+    <div class="cta-content">
+      <h2 class="cta-headline">See it in action.</h2>
+      <a href="https://kairoscare.vercel.app/request-demo" class="cta-button" target="_blank" rel="noopener">
+        Start a Free Pilot
+        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="cta-sub">No contracts. No setup fees. Just clarity.</p>
+      <div class="cta-footer">
+        <span class="cta-brand">KairosCare</span>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="story.js"></script>
+</body>
+</html>
