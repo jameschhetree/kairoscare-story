@@ -25,30 +25,24 @@ dots.forEach((dot) => {
   });
 });
 
-/* ---- Section 1: Opening (pinned) ---- */
-const openingTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#opening",
-    start: "top top",
-    end: "+=2000",
-    pin: true,
-    scrub: 1,
+/* ---- Scroll Progress Bar ---- */
+ScrollTrigger.create({
+  trigger: document.body,
+  start: "top top",
+  end: "bottom bottom",
+  onUpdate: (self) => {
+    document.querySelector(".scroll-progress-bar").style.width =
+      (self.progress * 100) + "%";
   },
 });
 
-openingTl
-  .to(".opening-line-1", { opacity: 1, duration: 1 })
-  .to(".opening-line-1", { opacity: 1, duration: 0.5 })
-  .to(".opening-line-1", { opacity: 0, duration: 0.8 })
-  .to(".opening-line-2", { opacity: 1, duration: 1 })
-  .to(".opening-line-2", { opacity: 1, duration: 0.5 })
-  .to(".blue-glow", { opacity: 1, scale: 3, duration: 1.5 }, "<0.3")
-  .to(".opening-line-2", { opacity: 0, duration: 0.5 }, ">0.3");
-
-/* ---- Section 2: The Invisible Crisis (pinned) ---- */
-const crisisTl = gsap.timeline({
+/* ================================================================
+   Section 1: Opening — Full-bleed hero, pinned text sequence,
+   image zoom scrub (1.2 -> 1.0)
+   ================================================================ */
+const openingTl = gsap.timeline({
   scrollTrigger: {
-    trigger: "#crisis",
+    trigger: "#opening",
     start: "top top",
     end: "+=2500",
     pin: true,
@@ -56,13 +50,34 @@ const crisisTl = gsap.timeline({
   },
 });
 
-crisisTl
-  .to(".crisis-title", { opacity: 1, duration: 0.5 })
-  .to(".stat-card:nth-child(1)", { opacity: 1, y: 0, duration: 0.8 })
-  .to(".stat-card:nth-child(2)", { opacity: 1, y: 0, duration: 0.8 }, ">-0.3")
-  .to(".stat-card:nth-child(3)", { opacity: 1, y: 0, duration: 0.8 }, ">-0.3");
+openingTl
+  .fromTo("#opening .bg-img", { scale: 1.2 }, { scale: 1.0, duration: 4, ease: "none" }, 0)
+  .to(".opening-line-1", { opacity: 1, duration: 0.8 }, 0.2)
+  .to({}, { duration: 0.4 })
+  .to(".opening-line-2", { opacity: 1, duration: 0.8 })
+  .to({}, { duration: 0.5 })
+  .to(".opening-content", { opacity: 0, y: -40, duration: 0.6 });
 
-/* Counter animation tied to scroll */
+/* ================================================================
+   Section 2: The Crisis — Stats counter over darkened team photo
+   ================================================================ */
+const crisisTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#crisis",
+    start: "top top",
+    end: "+=3000",
+    pin: true,
+    scrub: 1,
+  },
+});
+
+crisisTl
+  .fromTo("#crisis .bg-img", { scale: 1.1 }, { scale: 1.0, duration: 4, ease: "none" }, 0)
+  .to(".crisis-title", { opacity: 1, duration: 0.5 }, 0.2)
+  .to(".stat-card:nth-child(1)", { opacity: 1, y: 0, duration: 0.8 }, 0.6)
+  .to(".stat-card:nth-child(2)", { opacity: 1, y: 0, duration: 0.8 }, 0.9)
+  .to(".stat-card:nth-child(3)", { opacity: 1, y: 0, duration: 0.8 }, 1.2);
+
 document.querySelectorAll(".stat-number").forEach((el) => {
   const target = parseFloat(el.dataset.target);
   const suffix = el.dataset.suffix || "";
@@ -95,7 +110,9 @@ document.querySelectorAll(".stat-number").forEach((el) => {
   });
 });
 
-/* ---- Section 3: Horizontal Scroll (Day in Care) ---- */
+/* ================================================================
+   Section 3: Horizontal Scroll — Day in Care cards over background
+   ================================================================ */
 const dayWrapper = document.querySelector(".day-wrapper");
 const dayTrack = document.querySelector(".day-track");
 
@@ -116,13 +133,13 @@ const dayTween = gsap.to(dayWrapper, {
   },
 });
 
-document.querySelectorAll(".day-card").forEach((card, i) => {
+document.querySelectorAll(".day-card").forEach((card) => {
   gsap.to(card, {
     opacity: 1,
     y: 0,
     duration: 0.5,
     scrollTrigger: {
-      trigger: card,
+      trigger: card.closest(".day-panel"),
       containerAnimation: dayTween,
       start: "left 80%",
       toggleActions: "play none none reverse",
@@ -130,48 +147,12 @@ document.querySelectorAll(".day-card").forEach((card, i) => {
   });
 });
 
-/* ---- Section 4: The Gap ---- */
+/* ================================================================
+   Section 4: The Gap — Split screen wipe with SVG divider
+   ================================================================ */
 const gapTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#gap",
-    start: "top 60%",
-    end: "center center",
-    scrub: 1,
-  },
-});
-
-document.querySelectorAll(".note-line").forEach((line, i) => {
-  gapTl.to(
-    line,
-    { opacity: 1, x: 0, duration: 0.3 },
-    i * 0.15
-  );
-});
-
-gsap.to(".gap-line", {
-  strokeDashoffset: 0,
-  scrollTrigger: {
-    trigger: "#gap",
-    start: "top 50%",
-    end: "bottom 60%",
-    scrub: 1,
-  },
-});
-
-gsap.to(".gap-text", {
-  opacity: 1,
-  scrollTrigger: {
-    trigger: ".gap-text",
-    start: "top 85%",
-    end: "top 60%",
-    scrub: 1,
-  },
-});
-
-/* ---- Section 5: Enter KairosCare (pinned) ---- */
-const enterTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#enter",
     start: "top top",
     end: "+=2500",
     pin: true,
@@ -179,17 +160,135 @@ const enterTl = gsap.timeline({
   },
 });
 
-enterTl
-  .to(".kc-logo-text", { opacity: 1, scale: 1, duration: 1.5, ease: "power3.out" })
-  .to(".kc-logo-text", { opacity: 1, duration: 0.3 })
-  .to(".cap-card-1", { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.8 })
-  .to(".cap-card-2", { opacity: 1, y: 0, duration: 0.8 }, "<0.2")
-  .to(".cap-card-3", { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.8 }, "<0.2");
+gapTl
+  .to(".gap-line", { strokeDashoffset: 0, duration: 1.5, ease: "none" }, 0)
+  .fromTo(".gap-left .gap-panel-content", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8 }, 0.2);
 
-/* ---- Section 6: How It Works (pinned) ---- */
+document.querySelectorAll(".note-line").forEach((line, i) => {
+  gapTl.to(line, { opacity: 1, x: 0, duration: 0.25 }, 0.4 + i * 0.12);
+});
+
+gapTl
+  .fromTo(".gap-right .gap-panel-content", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8 }, 0.8)
+  .to(".gap-text", { opacity: 1, duration: 0.6 }, 2);
+
+/* ================================================================
+   Section 5: Connection — Clip-path circle reveal
+   ================================================================ */
+const connectionTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#connection",
+    start: "top top",
+    end: "+=3000",
+    pin: true,
+    scrub: 1,
+  },
+});
+
+connectionTl
+  .to(".connection-question", { opacity: 1, y: 0, duration: 0.8 }, 0)
+  .to({}, { duration: 0.3 })
+  .to(".connection-reveal-bg", {
+    clipPath: "circle(75% at 50% 50%)",
+    duration: 2,
+    ease: "power2.inOut",
+  }, 0.5)
+  .fromTo(".connection-reveal-bg .bg-img", { scale: 1.15 }, { scale: 1.0, duration: 2.5, ease: "none" }, 0.5)
+  .to(".kc-logo-text", { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }, 1.2)
+  .to({}, { duration: 0.5 });
+
+/* ================================================================
+   Section 6: How It Works — Cards sequence over dashboard
+   ================================================================ */
 const howTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#how",
+    start: "top top",
+    end: "+=2500",
+    pin: true,
+    scrub: 1,
+  },
+});
+
+howTl
+  .fromTo("#how .bg-img", { scale: 1.1 }, { scale: 1.0, duration: 4, ease: "none" }, 0)
+  .to(".how-title", { opacity: 1, duration: 0.5 }, 0.2)
+  .to(".cap-card-1", { opacity: 1, y: 0, duration: 0.8 }, 0.7)
+  .to(".cap-card-2", { opacity: 1, y: 0, duration: 0.8 }, 1.1)
+  .to(".cap-card-3", { opacity: 1, y: 0, duration: 0.8 }, 1.5);
+
+/* ================================================================
+   Section 7: Impact — Parallax at different depths
+   ================================================================ */
+const impactTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#impact",
+    start: "top top",
+    end: "+=2500",
+    pin: true,
+    scrub: 1,
+  },
+});
+
+impactTl
+  .fromTo(".impact-parallax-img", { scale: 1.15 }, { scale: 1.0, duration: 4, ease: "none" }, 0)
+  .to(".impact-stat.layer-1", { opacity: 1, y: 0, duration: 0.8 }, 0.4)
+  .to(".impact-stat.layer-2", { opacity: 1, y: 0, duration: 0.8 }, 0.8)
+  .to(".impact-stat.layer-3", { opacity: 1, y: 0, duration: 0.8 }, 1.2);
+
+gsap.to(".impact-stat.layer-1", {
+  yPercent: -20,
+  scrollTrigger: {
+    trigger: "#impact",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+});
+
+gsap.to(".impact-stat.layer-2", {
+  yPercent: -10,
+  scrollTrigger: {
+    trigger: "#impact",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+});
+
+gsap.to(".impact-stat.layer-3", {
+  yPercent: 5,
+  scrollTrigger: {
+    trigger: "#impact",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+});
+
+/* ================================================================
+   Section 8: Three Experiences — Clip-path wipe reveal
+   ================================================================ */
+document.querySelectorAll(".exp-panel").forEach((panel) => {
+  gsap.to(panel, {
+    clipPath: "inset(0 0% 0 0)",
+    duration: 1,
+    ease: "power2.inOut",
+    scrollTrigger: {
+      trigger: panel,
+      start: "top 80%",
+      end: "top 30%",
+      scrub: 1,
+    },
+  });
+});
+
+/* ================================================================
+   Section 9: The Future — Ken Burns + blur reveal
+   ================================================================ */
+const futureTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#future",
     start: "top top",
     end: "+=2000",
     pin: true,
@@ -197,145 +296,15 @@ const howTl = gsap.timeline({
   },
 });
 
-howTl.to(".how-title", { opacity: 1, duration: 0.5 });
-
-document.querySelectorAll(".flow-step").forEach((step, i) => {
-  howTl.to(step, { opacity: 1, y: 0, duration: 0.5 }, 0.6 + i * 0.4);
-});
-
-howTl.to(
-  ".flow-path",
-  { strokeDashoffset: 0, duration: 2, ease: "none" },
-  0.6
-);
-
-/* ---- Section 7: The Impact (parallax) ---- */
-gsap.to(".impact-title", {
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 70%",
-    end: "top 40%",
-    scrub: 1,
-  },
-});
-
-gsap.to(".ripple-1", {
-  scale: 1,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 60%",
-    end: "center center",
-    scrub: 1,
-  },
-});
-
-gsap.to(".ripple-2", {
-  scale: 1,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 50%",
-    end: "center 30%",
-    scrub: 1,
-  },
-});
-
-gsap.to(".ripple-3", {
-  scale: 1,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 40%",
-    end: "center 20%",
-    scrub: 1,
-  },
-});
-
-/* Parallax layers at different depths */
-gsap.to(".layer-1", {
-  y: -60,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 60%",
-    end: "bottom top",
-    scrub: 1,
-  },
-});
-
-gsap.to(".layer-2", {
-  y: -30,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 55%",
-    end: "bottom top",
-    scrub: 1,
-  },
-});
-
-gsap.to(".layer-3", {
-  y: 0,
-  opacity: 1,
-  scrollTrigger: {
-    trigger: "#impact",
-    start: "top 50%",
-    end: "bottom top",
-    scrub: 1,
-  },
-});
-
-/* ---- Section 8: Three Experiences ---- */
-document.querySelectorAll(".exp-panel").forEach((panel) => {
-  gsap.to(panel, {
-    opacity: 1,
-    scale: 1,
-    duration: 0.8,
-    scrollTrigger: {
-      trigger: panel,
-      start: "top 80%",
-      end: "top 40%",
-      scrub: 1,
-    },
-  });
-});
-
-/* ---- Section 9: The Future ---- */
-const futureTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#future",
-    start: "top 60%",
-    end: "center center",
-    scrub: 1,
-  },
-});
-
 futureTl
-  .to(".future-line-1", { opacity: 1, filter: "blur(0px)", duration: 1 })
-  .to(".future-line-2", { opacity: 1, filter: "blur(0px)", duration: 1 }, ">-0.3");
+  .fromTo(".future-ken-burns", { scale: 1.15 }, { scale: 1.0, duration: 3, ease: "none" }, 0)
+  .to(".future-line-1", { opacity: 1, filter: "blur(0px)", duration: 1 }, 0.3)
+  .to({}, { duration: 0.3 })
+  .to(".future-line-2", { opacity: 1, filter: "blur(0px)", duration: 1 }, 1.2);
 
-/* Particles */
-document.querySelectorAll(".particle").forEach((p, i) => {
-  gsap.to(p, {
-    opacity: gsap.utils.random(0.2, 0.6),
-    y: gsap.utils.random(-40, 40),
-    x: gsap.utils.random(-30, 30),
-    duration: gsap.utils.random(2, 4),
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut",
-    delay: i * 0.2,
-    scrollTrigger: {
-      trigger: "#future",
-      start: "top 80%",
-      toggleActions: "play pause play pause",
-    },
-  });
-});
-
-/* ---- Section 10: CTA ---- */
+/* ================================================================
+   Section 10: CTA
+   ================================================================ */
 const ctaTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#cta",
